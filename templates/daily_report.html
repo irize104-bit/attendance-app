@@ -1,4 +1,7 @@
 <h2>Daily Attendance Report</h2>
+<a href="/download-report">
+<button>Download Excel</button>
+</a>
 
 <table border="1">
 <tr>
@@ -8,9 +11,6 @@
 <th>Exit</th>
 <th>Date</th>
 </tr>
-  <a href="/download-report">
-<button>Download Excel</button>
-</a>
 
 {% for r in records %}
 <tr>
@@ -23,4 +23,5 @@
 {% endfor %}
 
 </table>
+
 
