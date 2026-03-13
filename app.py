@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
-import pandas as pd
-from flask import send_file
-import io
 
 
 app = Flask(__name__)
@@ -120,6 +117,7 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True, host='0.0.0.0')
+
 
 
 
