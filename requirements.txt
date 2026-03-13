@@ -1,3 +1,6 @@
 flask
 flask-sqlalchemy
+
 gunicorn
+pandas
+openpyxl
