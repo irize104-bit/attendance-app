@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Edit Attendance</title>
+</head>
+
+<body>
+
+<h2>Edit Attendance</h2>
+
+<form method="POST">
+
+Name<br>
+<input type="text" name="name" value="{{record.name}}" required><br><br>
+
+Site<br>
+<input type="text" name="site" value="{{record.site}}" required><br><br>
+
+Entry Time<br>
+<input type="time" name="entry_time" value="{{record.entry_time}}"><br><br>
+
+Exit Time<br>
+<input type="time" name="exit_time" value="{{record.exit_time}}"><br><br>
+
+<button type="submit">Update Attendance</button>
+
+</form>
+
+</body>
+
+</html>
