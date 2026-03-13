@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <TITLE>IRIZE BUILDING CONTRACTING LLC</TITLE>
+<title>IRBC SUPPLY MEMBER ATTENDANCE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family: Arial;
+background-color:#f2f6fc;
+text-align:center;
+}
+
+h2{
+color:white;
+background:#e5672c;
+padding:15px;
+border-radius:8px;
+}
+
+form{
+background:rgba(255, 255, 255, 0.726);
+padding:20px;
+margin:auto;
+width:300px;
+border-radius:10px;
+box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:90%;
+padding:8px;
+margin:5px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:10px;
+width:95%;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#218838;
+}
+
+table{
+margin:auto;
+margin-top:20px;
+border-collapse:collapse;
+width:80%;
+}
+
+th{
+background:#e5952c;
+color:white;
+padding:10px;
+}
+
+td{
+padding:8px;
+background:white;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>IRBC SUPPLY MEMBER ATTENDANCE</h2>
+
+<form method="POST">
+
+Name<br>
+<input type="text" name="name" required><br>
+
+Site<br>
+<input type="text" name="site" required><br>
+
+Entry Time<br>
+<input type="time" name="entry_time"><br>
+
+Exit Time<br>
+<input type="time" name="exit_time"><br><br>
+
+<button type="submit">Submit Attendance</button>
+
+</form>
+
+<hr>
+
+<h3>Attendance Records</h3>
+
+<table border="1">
+
+<tr>
+<th>Name</th>
+<th>Site</th>
+<th>Date</th>
+<th>Entry</th>
+<th>Exit</th>
+<th>Action</th>
+</tr>
+
+{% for r in records %}
+
+<tr>
+<td>{{r.name}}</td>
+<td>{{r.site}}</td>
+<td>{{r.date}}</td>
+<td>{{r.entry_time}}</td>
+<td>{{r.exit_time}}</td>
+<td>
+<a href="/edit/{{r.id}}">Edit</a> |
+<a href="/delete/{{r.id}}">Delete</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>>
