@@ -1,0 +1,22 @@
+<h2>Daily Attendance Report</h2>
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Site</th>
+<th>Entry</th>
+<th>Exit</th>
+<th>Date</th>
+</tr>
+
+{% for r in records %}
+<tr>
+<td>{{ r.name }}</td>
+<td>{{ r.site }}</td>
+<td>{{ r.entry_time }}</td>
+<td>{{ r.exit_time }}</td>
+<td>{{ r.date }}</td>
+</tr>
+{% endfor %}
+
+</table>
