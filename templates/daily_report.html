@@ -1,9 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Daily Attendance Report</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+}
+
+h1{
+color:#333;
+margin-top:20px;
+}
+
+/* Download Button */
+.download-btn{
+background-color:green;
+color:white;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+.download-btn:hover{
+background-color:darkgreen;
+}
+
+/* Table Style */
+table{
+margin:auto;
+border-collapse:collapse;
+width:70%;
+}
+
+th,td{
+padding:10px;
+border:1px solid black;
+}
+
+/* Orange Header */
+th{
+background-color:orange;
+color:white;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>IRBC SUPPLY ATTENDANCE LIST</h1>
+
 <h2>Daily Attendance Report</h2>
+
 <a href="/download-report">
-<button>Download Excel</button>
+<button class="download-btn">Download Excel</button>
 </a>
 
-<table border="1">
+<table>
+
 <tr>
 <th>Name</th>
 <th>Site</th>
@@ -23,5 +85,9 @@
 {% endfor %}
 
 </table>
+
+</body>
+</html>
+
 
 
