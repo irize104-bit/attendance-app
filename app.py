@@ -38,7 +38,12 @@ def index():
 
         # Check if both empty
         if entry_time == "" and exit_time == "":
-            return "Please enter Entry Time or Exit Time"
+          return """
+          <script>
+          alert("Please enter Entry Time or Exit Time");
+          window.location.href="/";
+          </script>
+          """
 
         # Check existing attendance today
         existing_record = Attendance.query.filter_by(name=name, date=today).first()
@@ -150,6 +155,7 @@ if __name__ == "__main__":
         db.create_all()
 
     app.run(debug=True, host='0.0.0.0')
+
 
 
 
