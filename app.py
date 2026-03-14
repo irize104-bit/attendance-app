@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-# Database Table
+# DATABASE TABLE
 class Attendance(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
@@ -28,17 +28,37 @@ class Attendance(db.Model):
 def index():
 
     if request.method == 'POST':
+
         name = request.form['name']
         site = request.form['site']
         entry_time = request.form['entry_time']
         exit_time = request.form['exit_time']
 
+        today = str(datetime.today().date())
+
+        # Check if both empty
+        if entry_time == "" and exit_time == "":
+            return "Please enter Entry Time or Exit Time"
+
+        # Check existing attendance today
+        existing_record = Attendance.query.filter_by(name=name, date=today).first()
+
+        if existing_record:
+
+            # If exit time entered later, update it
+            if exit_time != "":
+                existing_record.exit_time = exit_time
+                db.session.commit()
+
+            return redirect('/')
+
+        # Create new record
         record = Attendance(
             name=name,
             site=site,
             entry_time=entry_time,
             exit_time=exit_time,
-            date=str(datetime.today().date())
+            date=today
         )
 
         db.session.add(record)
@@ -86,6 +106,7 @@ def edit(id):
 # DAILY REPORT PAGE
 @app.route("/daily-report")
 def daily_report():
+
     today = date.today().strftime("%Y-%m-%d")
     records = Attendance.query.filter_by(date=today).all()
 
@@ -124,9 +145,11 @@ def download_report():
 
 
 if __name__ == "__main__":
+
     with app.app_context():
         db.create_all()
 
     app.run(debug=True, host='0.0.0.0')
+
 
 
